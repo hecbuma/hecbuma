@@ -1,0 +1,10 @@
+# Logfile created on Tue Jul 06 12:43:41 -0500 2010
+
+Processing SiteController#show_page (for 127.0.0.1 at 2010-07-06 12:46:27) [GET]
+  Parameters: {"action"=>"show_page", "url"=>"/", "controller"=>"site"}
+Completed in 1547ms (DB: 382) | 200 [http://localhost/]
+
+
+Processing SiteController#show_page (for 127.0.0.1 at 2010-07-06 12:46:29) [GET]
+  Parameters: {"action"=>"show_page", "url"=>["styles.css"], "controller"=>"site"}
+Completed in 130ms (DB: 5) | 200 [http://localhost/styles.css]
