@@ -1,0 +1,128 @@
+%section{class: "hero bkg#{rand(5)}"}
+  .row.intro
+    .medium-6.large-12.small-centered.columns
+      %h1.text-center Hector Bustillos
+      %h2.text-center Senior Web Developer
+  = link_to '#profile', class: 'move-down', :"data-magellan-arrival" => "profile" do
+    %i.fa.fa-angle-double-down
+%section#profile.white-bkg{"data-magellan-destination" => "profile"}
+
+  %div.sub-nav-div{"data-magellan-expedition" => "fixed", "data-options" =>"offset_by_height:false;throttle_delay:0;"}
+    %ul.sub-nav.large-push-11.small-push-8.large-2.columns
+      %li{"data-magellan-arrival" => "profile"}
+        = link_to 'Profile', '#profile'
+      %li{"data-magellan-arrival" => "skills"}
+        = link_to 'Skills', "#skills"
+      %li{"data-magellan-arrival" => "career"}
+        = link_to 'Career', "#career"
+      %li{"data-magellan-arrival" => "contact"}
+        = link_to 'Contact', '#contact'
+
+  %header.row
+    .small-centered.large-12.columns
+      %h2.text-center Who am I?
+  .row
+    .small-centered.large-12.columns
+      %hr
+  .row
+    %ul.large-block-grid-2.small-block-grid-1
+      %li.text-center
+        = image_tag 'hectorBustillos', class: 'profile-img'
+      %li
+        %p
+          I'm
+          %b Hector Bustillos,
+          I'm a Senior web developer with 5+ years of experience doing ruby on rails
+          applications. Working on different applications during the past years
+          made me able to use different sets of skills; for example I have a good
+          eye for front-end but at the same time a enjoy building back-end code.
+          I really like to have some hard-hat-time working in infrastructure related
+          matters and optimizing apps.
+        %p
+          I can say that I love this thing that I do and I want to keep doing it
+          for as long as I can, I'm alwyas commited to my projects and I try to give
+          a 120% to accomplish project's goals. I like to keep a good and strong
+          relationship with my peeps to work in harmony and happy.
+        %p
+          I have helped multiple clients to achieve multiple goals, for example handiing
+          thousends concurrent user during a black friday and other sales days or
+          helping to connect multiple indepentent music artits with venues, vendores and more.
+
+%section#skills.blue-bkg{"data-magellan-destination" => "skills"}
+  %header.row
+    .small-centered.large-12.columns
+      %h2.text-center What can I do?
+  .row
+    .small-centered.large-12.columns
+      %hr
+  .row
+    %ul.skills.large-12.columns
+      - @data[:skills].each do |key, values|
+        %li.title
+          %i{class: "fa #{values.first}"}
+          = key
+        - values.last.each do |value|
+          %li
+            %i.fa.fa-minus.fa-fw
+            %span= value
+
+
+%section#career.white-bkg{"data-magellan-destination" => "career"}
+  %header.row
+    .small-centered.large-12.columns
+      %h2.text-center What have I done?
+  .row
+    .small-centered.large-12.columns
+      %hr
+  - @data[:projects].each do |key, value|
+    .row
+      %article{class: "large-6 columns #{cycle('odd', 'push-6 even')}"}
+        %header
+          %h6
+            = key
+            %small= value.first
+          %p= value.last
+%section#contact.blue-bkg{"data-magellan-destination" => "contact"}
+  %header.row
+    .small-centered.large-12.columns
+      %h2.text-center Want to talk?
+  .row
+    .small-centered.large-12.columns
+      %hr
+  .row
+    .small-centered.large-12.columns
+      %h6.text-center
+        Youn can find me everywhere as
+        %strong hecbuma.
+  .row
+    .small-centered.large-8.columns
+      %ul
+        %li
+          =link_to 'hecbuma@gmail.com', target: '_blank' do
+            %i.fa.fa-envelope-square
+            hecbuma@gmail.com
+        %li
+          =link_to 'http://twitter.com/hecbuma', target: '_blank' do
+            %i.fa.fa-twitter-square
+            http://twitter.com/hecbuma
+        %li
+          =link_to 'https://www.linkedin.com/in/hecbuma', target: '_blank' do
+            %i.fa.fa-linkedin-square
+            https://www.linkedin.com/in/hecbuma
+        %li
+          =link_to 'http://github.com/hecbuma', target: '_blank' do
+            %i.fa.fa-github-square
+            http://github.com/hecbuma
+
+  .small-centered.large-8.columns.text-center
+    %h6
+      or if you prefer throw me a line.
+  .row
+    #contactForm.small-centered.large-8.columns
+      = render partial: 'contacts/form', locals: {contact: @data[:contact]}
+
+
+#myModal.reveal-modal{"aria-hidden" => "true", "aria-labelledby" => "modalTitle", "data-reveal" => "", :role => "dialog"}
+  %h2#modalTitle Awesome. I have it.
+  %p I'll check your message and answer back as soon as I can.
+  %a.close-reveal-modal{"aria-label" => "Close"} ×

@@ -1,0 +1,19 @@
+%ul#errors
+= form_for contact, remote: true do |f|
+  .row
+    .large-6.columns
+      %label
+        Name
+        = f.text_field :name, placeholder: 'Jon Doe'
+    .large-6.columns
+      %label
+        Email
+        = f.email_field :email, placeholder: 'jon@coolsite.cc'
+  .row
+    .large-12.columns
+      %label Message
+      = text_area :contact, :message, rows: 8, placeholder: "I'm cuorios to hear from you"
+  .row
+    .large-13.columns
+      = f.hidden_field :iamabot
+      = f.submit 'Send Message', class: 'button radius secondary', disable_with: 'sending...'
